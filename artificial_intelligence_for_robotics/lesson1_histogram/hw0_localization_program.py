@@ -161,11 +161,12 @@ def show(p):
 #  [0.00910, 0.00715, 0.01434, 0.04313, 0.03642]]
 # (within a tolerance of +/- 0.001 for each entry)
 
-colors = [['R','G','G','R','R'],
-          ['R','R','G','R','R'],
-          ['R','R','G','G','R'],
-          ['R','R','R','R','R']]
-measurements = ['G','G','G','G','G']
-motions = [[0,0],[0,1],[1,0],[1,0],[0,1]]
-p = localize(colors,measurements,motions,sensor_right = 0.7, p_move = 0.8)
-#show(p) # displays your answer
+if __name__ == "__main__":
+    colors = [['R','G','G','R','R'],
+              ['R','R','G','R','R'],
+              ['R','R','G','G','R'],
+              ['R','R','R','R','R']]
+    measurements = ['G','G','G','G','G']
+    motions = [[0,0],[0,1],[1,0],[1,0],[0,1]]
+    p = localize(colors,measurements,motions,sensor_right = 0.7, p_move = 0.8)
+    #show(p) # displays your answer

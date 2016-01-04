@@ -124,18 +124,19 @@ class robot:
 ## 1) The following code should print the list [6.004885648174475, 3.7295952571373605, 1.9295669970654687, 0.8519663271732721]
 ##
 ##
-# length = 20.
-# bearing_noise  = 0.0
-# steering_noise = 0.0
-# distance_noise = 0.0
+# if __name__ == "__main__":
+#     length = 20.
+#     bearing_noise  = 0.0
+#     steering_noise = 0.0
+#     distance_noise = 0.0
 #
-# myrobot = robot(length)
-# myrobot.set(30.0, 20.0, 0.0)
-# myrobot.set_noise(bearing_noise, steering_noise, distance_noise)
+#     myrobot = robot(length)
+#     myrobot.set(30.0, 20.0, 0.0)
+#     myrobot.set_noise(bearing_noise, steering_noise, distance_noise)
 #
-# print('Robot:        ', myrobot)
-# print('Measurements: ', myrobot.sense())
-#
+#     print('Robot:        ', myrobot)
+#     print('Measurements: ', myrobot.sense())
+
 
 ## IMPORTANT: You may uncomment the test cases below to test your code.
 ## But when you submit this code, your test cases MUST be commented
@@ -147,17 +148,18 @@ class robot:
 ## 2) The following code should print the list [5.376567117456516, 3.101276726419402, 1.3012484663475101, 0.22364779645531352]
 ##
 ##
-# length = 20.
-# bearing_noise  = 0.0
-# steering_noise = 0.0
-# distance_noise = 0.0
-#
-# myrobot = robot(length)
-# myrobot.set(30.0, 20.0, pi / 5.0)
-# myrobot.set_noise(bearing_noise, steering_noise, distance_noise)
-#
-# print('Robot:        ', myrobot)
-# print('Measurements: ', myrobot.sense())
+if __name__ == "__main__":
+    length = 20.
+    bearing_noise  = 0.0
+    steering_noise = 0.0
+    distance_noise = 0.0
+
+    myrobot = robot(length)
+    myrobot.set(30.0, 20.0, pi / 5.0)
+    myrobot.set_noise(bearing_noise, steering_noise, distance_noise)
+
+    print('Robot:        ', myrobot)
+    print('Measurements: ', myrobot.sense())
 
 
 
