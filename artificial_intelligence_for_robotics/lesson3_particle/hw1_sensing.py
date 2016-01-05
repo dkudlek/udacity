@@ -148,18 +148,18 @@ class robot:
 ## 2) The following code should print the list [5.376567117456516, 3.101276726419402, 1.3012484663475101, 0.22364779645531352]
 ##
 ##
-if __name__ == "__main__":
-    length = 20.
-    bearing_noise  = 0.0
-    steering_noise = 0.0
-    distance_noise = 0.0
-
-    myrobot = robot(length)
-    myrobot.set(30.0, 20.0, pi / 5.0)
-    myrobot.set_noise(bearing_noise, steering_noise, distance_noise)
-
-    print('Robot:        ', myrobot)
-    print('Measurements: ', myrobot.sense())
+# if __name__ == "__main__":
+#     length = 20.
+#     bearing_noise  = 0.0
+#     steering_noise = 0.0
+#     distance_noise = 0.0
+#
+#     myrobot = robot(length)
+#     myrobot.set(30.0, 20.0, pi / 5.0)
+#     myrobot.set_noise(bearing_noise, steering_noise, distance_noise)
+#
+#     print('Robot:        ', myrobot)
+#     print('Measurements: ', myrobot.sense())
 
 
 
