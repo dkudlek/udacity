@@ -1,18 +1,8 @@
 #! /usr/bin/env python3
-# Now we want to create particles,
-# p[i] = robot(). In this assignment, write
-# code that will assign 1000 such particles
-# to a list.
-#
-# Your program should print out the length
-# of your list (don't cheat by making an
-# arbitrary list of 1000 elements!)
-#
-# Don't modify the code below. Please enter
-# your code at the bottom.
 
 from math import *
 import random
+
 
 
 landmarks  = [[20.0, 20.0], [80.0, 80.0], [20.0, 80.0], [80.0, 20.0]]
@@ -98,21 +88,24 @@ class robot:
         return '[x=%.6s y=%.6s orient=%.6s]' % (str(self.x), str(self.y), str(self.orientation))
 
 
-#myrobot = robot()
-#myrobot.set_noise(5.0, 0.1, 5.0)
-#myrobot.set(30.0, 50.0, pi/2)
-#myrobot = myrobot.move(-pi/2, 15.0)
-#print myrobot.sense()
-#myrobot = myrobot.move(-pi/2, 10.0)
-#print myrobot.sense()
-
 ####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER CODE BELOW ####
+"""
+@task two ("creating particles")
+@todo create particles
 
-N = 1000
-p = []
+@steps:
+p[i] = robot()
+assign 1000 particles to list
 
-#enter code here
-for i in range(N):
-    p.append(robot())
+@Output: length of list
+"""
 
-print("number of created particles:",len(p))
+if __name__ == "__main__":
+    N = 1000
+    p = []
+
+    #enter code here
+    for i in range(N):
+        p.append(robot())
+
+    print("number of created particles:",len(p))

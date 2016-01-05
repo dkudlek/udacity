@@ -1,13 +1,8 @@
 #! /usr/bin/env python3
-# Now we want to give weight to our
-# particles. This program will print a
-# list of 1000 particle weights.
-#
-# Don't modify the code below. Please enter
-# your code at the bottom.
 
 from math import *
 import random
+
 
 
 landmarks  = [[20.0, 20.0], [80.0, 80.0], [20.0, 80.0], [80.0, 20.0]]
@@ -93,35 +88,40 @@ class robot:
         return '[x=%.6s y=%.6s orient=%.6s]' % (str(self.x), str(self.y), str(self.orientation))
 
 
-#myrobot = robot()
-#myrobot.set_noise(5.0, 0.1, 5.0)
-#myrobot.set(30.0, 50.0, pi/2)
-#myrobot = myrobot.move(-pi/2, 15.0)
-#print myrobot.sense()
-#myrobot = myrobot.move(-pi/2, 10.0)
-#print myrobot.sense()
 
 ####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER CODE BELOW ####
-myrobot = robot()
-myrobot = myrobot.move(0.1, 5.0)
-Z = myrobot.sense()
+"""
+@task four ("importance_weight")
+@todo give weight to our particles
 
-N = 1000
-p = []
-for i in range(N):
-    x = robot()
-    x.set_noise(0.05, 0.05, 5.0)
-    p.append(x)
+@steps
+use measurement from the robot to compute weight
 
-p2 = []
-for i in range(N):
-    p2.append(p[i].move(0.1, 5.0))
-p = p2
+@output List of all particles weights
+"""
 
-w = []
-#insert code here!
-for i in range(N):
-    Z = p[i].sense()
-    w.append(p[i].measurement_prob(Z))
+if __name__ == "__main__":
+    myrobot = robot()
+    myrobot = myrobot.move(0.1, 5.0)
+    Z = myrobot.sense()
 
-for i in w: print(i) #Please print w for grading purposes.
+    N = 1000
+    p = []
+    for i in range(N):
+        x = robot()
+        x.set_noise(0.05, 0.05, 5.0)
+        p.append(x)
+
+    p2 = []
+    for i in range(N):
+        p2.append(p[i].move(0.1, 5.0))
+    p = p2
+
+    w = []
+    #insert code here!
+    for i in range(N):
+        Z = p[i].sense()
+        w.append(p[i].measurement_prob(Z))
+
+    #for i in w: print(i) #Please print w for grading purposes.
+    print(w)

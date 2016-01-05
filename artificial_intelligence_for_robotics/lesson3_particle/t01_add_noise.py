@@ -1,19 +1,4 @@
 #! /usr/bin/env python3
-# Now add noise to your robot as follows:
-# forward_noise = 5.0, turn_noise = 0.1,
-# sense_noise = 5.0.
-#
-# Once again, your robot starts at 30, 50,
-# heading north (pi/2), then turns clockwise
-# by pi/2, moves 15 meters, senses,
-# then turns clockwise by pi/2 again, moves
-# 10 m, then senses again.
-#
-# Your program should print out the result of
-# your two sense measurements.
-#
-# Don't modify the code below. Please enter
-# your code at the bottom.
 
 from math import *
 import random
@@ -99,8 +84,6 @@ class robot:
             prob *= self.Gaussian(dist, self.sense_noise, measurement[i])
         return prob
 
-
-
     def __repr__(self):
         return '[x=%.6s y=%.6s orient=%.6s]' % (str(self.x), str(self.y), str(self.orientation))
 
@@ -118,13 +101,31 @@ def eval(r, p):
 
 
 ####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER CODE BELOW ####
+"""
+@task: one ("add noise")
+@todo: set robot, add noise, move and sense twice, print each sense
 
-myrobot = robot()
-myrobot.set_noise(5.0, 0.1, 5.0)
-myrobot.set(30,50,pi/2)
-myrobot = myrobot.move(-pi/2,15.0)
-z_one = myrobot.sense()
-print("observation 1:",z_one)
-myrobot = myrobot.move(-pi/2,10.0)
-z_two = myrobot.sense()
-print("observation 2:",z_two)
+@steps:
+forward_noise = 5.0, turn_noise = 0.1, sense_noise = 5.0
+start at  x=30.0, y=50.0 , heading north=pi/2
+turns clockwise by pi/2, moves 15 meters
+senses
+turns clockwise by, moves 10 meters
+senses
+
+@output1 : +- random amount
+[39.05124837953327, 46.09772228646444, 39.05124837953327, 46.09772228646444]
+
+@output2 : +- random amount
+[32.01562118716424, 53.150729063673246, 47.16990566028302, 40.311288741492746]
+"""
+if __name__ == "__main__":
+    myrobot = robot()
+    myrobot.set_noise(5.0, 0.1, 5.0)
+    myrobot.set(30,50,pi/2)
+    myrobot = myrobot.move(-pi/2,15.0)
+    z_one = myrobot.sense()
+    print("observation 1:",z_one)
+    myrobot = myrobot.move(-pi/2,10.0)
+    z_two = myrobot.sense()
+    print("observation 2:",z_two)

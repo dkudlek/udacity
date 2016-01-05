@@ -1,12 +1,13 @@
 #! /usr/bin/env python3
-# In this exercise, you should implement the
-# resampler shown in the previous video.
 
 from math import *
 import random
 
+
+
 landmarks  = [[20.0, 20.0], [80.0, 80.0], [20.0, 80.0], [80.0, 20.0]]
 world_size = 100.0
+
 
 class robot:
     def __init__(self):
@@ -87,54 +88,58 @@ class robot:
         return '[x=%.6s y=%.6s orient=%.6s]' % (str(self.x), str(self.y), str(self.orientation))
 
 
-#myrobot = robot()
-#myrobot.set_noise(5.0, 0.1, 5.0)
-#myrobot.set(30.0, 50.0, pi/2)
-#myrobot = myrobot.move(-pi/2, 15.0)
-#print myrobot.sense()
-#myrobot = myrobot.move(-pi/2, 10.0)
-#print myrobot.sense()
-
 ####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER CODE BELOW ####
-myrobot = robot()
-myrobot = myrobot.move(0.1, 5.0)
-Z = myrobot.sense()
+"""
+@task six ("resampling_wheel")
+@todo resample particles with wheel selection
 
-N = 1000
-p = []
-for i in range(N):
-    x = robot()
-    x.set_noise(0.05, 0.05, 5.0)
-    p.append(x)
+@steps
+higher weight means bigger area on the wheel
 
-p2 = []
-for i in range(N):
-    p2.append(p[i].move(0.1, 5.0))
-p = p2
+@output List of all particles
+"""
 
-w = []
-for i in range(N):
-    w.append(p[i].measurement_prob(p[i].sense()))
+if __name__ == "__main__":
 
-####
-## normalize
-W = sum(w)
-w_norm = []
-for i in range(N):
-  w_norm.append(w[i]/W)
+    myrobot = robot()
+    myrobot = myrobot.move(0.1, 5.0)
+    Z = myrobot.sense()
 
-assert(abs(sum(w_norm) - 1.0) <= 0.000001)
-prob = w_norm
-p3 = []
-idx = int(random.uniform(0, N-1))
-beta = 0
-for i in range(N):
-  beta = beta + random.random() * 2 * max(prob)
-  while prob[idx] < beta:
-    beta = beta - prob[idx]
-    idx = (idx + 1) % N
-  p3.append(p[idx])
-p = p3
+    N = 1000
+    p = []
+    for i in range(N):
+        x = robot()
+        x.set_noise(0.05, 0.05, 5.0)
+        p.append(x)
 
+    p2 = []
+    for i in range(N):
+        p2.append(p[i].move(0.1, 5.0))
+    p = p2
 
-for particle in p: print(particle) #please leave this print statement here for grading!
+    w = []
+    for i in range(N):
+        w.append(p[i].measurement_prob(p[i].sense()))
+
+    ####
+    ## normalize
+    W = sum(w)
+    w_norm = []
+    for i in range(N):
+      w_norm.append(w[i]/W)
+
+    assert(abs(sum(w_norm) - 1.0) <= 0.000001)
+    prob = w_norm
+    p3 = []
+    idx = int(random.uniform(0, N-1))
+    beta = 0
+    for i in range(N):
+      beta = beta + random.random() * 2 * max(prob)
+      while prob[idx] < beta:
+        beta = beta - prob[idx]
+        idx = (idx + 1) % N
+      p3.append(p[idx])
+    p = p3
+
+    print(particle)
+    #for particle in p: print(particle) #please leave this print statement here for grading!

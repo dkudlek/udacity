@@ -1,15 +1,8 @@
 #! /usr/bin/env python3
-# Now we want to simulate robot
-# motion with our particles.
-# Each particle should turn by 0.1
-# and then move by 5.
-#
-#
-# Don't modify the code below. Please enter
-# your code at the bottom.
 
 from math import *
 import random
+
 
 
 landmarks  = [[20.0, 20.0], [80.0, 80.0], [20.0, 80.0], [80.0, 20.0]]
@@ -95,23 +88,26 @@ class robot:
         return '[x=%.6s y=%.6s orient=%.6s]' % (str(self.x), str(self.y), str(self.orientation))
 
 
-#myrobot = robot()
-#myrobot.set_noise(5.0, 0.1, 5.0)
-#myrobot.set(30.0, 50.0, pi/2)
-#myrobot = myrobot.move(-pi/2, 15.0)
-#print myrobot.sense()
-#myrobot = myrobot.move(-pi/2, 10.0)
-#print myrobot.sense()
-
 ####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER CODE BELOW ####
 
-N = 1000
-p = []
-for i in range(N):
-    x = robot()
-    p.append(x)
+"""
+@task three ("robot particles")
+@todo simulate robot motion
 
-for i in range(N):
-    p[i] = p[i].move(0.1,5)
+@steps
+Each particle should turn by 0.1 and then move by 5.
 
-print(p) #PLEASE LEAVE THIS HERE FOR GRADING PURPOSES
+@output List of all particles
+"""
+
+if __name__ == "__main__":
+    N = 1000
+    p = []
+    for i in range(N):
+        x = robot()
+        p.append(x)
+
+    for i in range(N):
+        p[i] = p[i].move(0.1,5)
+
+    print(p) #PLEASE LEAVE THIS HERE FOR GRADING PURPOSES

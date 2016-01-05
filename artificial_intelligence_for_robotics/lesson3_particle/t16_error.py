@@ -1,11 +1,13 @@
 #! /usr/bin/env python3
-# Please only modify the indicated area below!
 
 from math import *
 import random
 
+
+
 landmarks  = [[20.0, 20.0], [80.0, 80.0], [20.0, 80.0], [80.0, 20.0]]
 world_size = 100.0
+
 
 class robot:
     def __init__(self):
@@ -96,50 +98,55 @@ def eval(r, p):
         sum += err
     return sum / float(len(p))
 
-#myrobot = robot()
-#myrobot.set_noise(5.0, 0.1, 5.0)
-#myrobot.set(30.0, 50.0, pi/2)
-#myrobot = myrobot.move(-pi/2, 15.0)
-#print myrobot.sense()
-#myrobot = myrobot.move(-pi/2, 10.0)
-#print myrobot.sense()
 
 ####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER/MODIFY CODE BELOW ####
-myrobot = robot()
-myrobot = myrobot.move(0.1, 5.0)
-Z = myrobot.sense()
-N = 1000
-T = 10 #Leave this as 10 for grading purposes.
 
-p = []
-for i in range(N):
-    r = robot()
-    r.set_noise(0.05, 0.05, 5.0)
-    p.append(r)
+"""
+@task eight ("error")
+@todo run previous code twice
 
-for t in range(T):
+@steps
+maybe a loop?
+
+@output List of all errors
+"""
+
+if __name__ == "__main__":
+    myrobot = robot()
     myrobot = myrobot.move(0.1, 5.0)
     Z = myrobot.sense()
+    N = 1000
+    T = 10 #Leave this as 10 for grading purposes.
 
-    p2 = []
+    p = []
     for i in range(N):
-        p2.append(p[i].move(0.1, 5.0))
-    p = p2
+        r = robot()
+        r.set_noise(0.05, 0.05, 5.0)
+        p.append(r)
 
-    w = []
-    for i in range(N):
-        w.append(p[i].measurement_prob(Z))
+    for t in range(T):
+        myrobot = myrobot.move(0.1, 5.0)
+        Z = myrobot.sense()
 
-    p3 = []
-    index = int(random.random() * N)
-    beta = 0.0
-    mw = max(w)
-    for i in range(N):
-        beta += random.random() * 2.0 * mw
-        while beta > w[index]:
-            beta -= w[index]
-            index = (index + 1) % N
-        p3.append(p[index])
-    p = p3
-    #enter code here, make sure that you output 10 print statements.
-    print(eval(myrobot, p))
+        p2 = []
+        for i in range(N):
+            p2.append(p[i].move(0.1, 5.0))
+        p = p2
+
+        w = []
+        for i in range(N):
+            w.append(p[i].measurement_prob(Z))
+
+        p3 = []
+        index = int(random.random() * N)
+        beta = 0.0
+        mw = max(w)
+        for i in range(N):
+            beta += random.random() * 2.0 * mw
+            while beta > w[index]:
+                beta -= w[index]
+                index = (index + 1) % N
+            p3.append(p[index])
+        p = p3
+        #enter code here, make sure that you output 10 print statements.
+        print(eval(myrobot, p))

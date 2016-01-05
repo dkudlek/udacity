@@ -1,15 +1,4 @@
 #! /usr/bin/env python3
-# Make a robot called myrobot that starts at
-# coordinates 30, 50 heading north (pi/2).
-# Have your robot turn clockwise by pi/2, move
-# 15 m, and sense. Then have it turn clockwise
-# by pi/2 again, move 10 m, and sense again.
-#
-# Your program should print out the result of
-# your two sense measurements.
-#
-# Don't modify the code below. Please enter
-# your code at the bottom.
 
 from math import *
 import random
@@ -114,12 +103,29 @@ def eval(r, p):
 
 
 ####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER CODE BELOW ####
+"""
+@task: zero ("moving robot")
+@todo: set robot, move and sense twice, print each sense
 
-myrobot = robot()
-myrobot.set(30,50,pi/2)
-myrobot = myrobot.move(-pi/2,15.0)
-z_one = myrobot.sense()
-print("observation 1:",z_one)
-myrobot = myrobot.move(-pi/2,10.0)
-z_two = myrobot.sense()
-print("observation 2:",z_two)
+@steps:
+start at  x=30.0, y=50.0 , heading north=pi/2
+turns clockwise by pi/2, moves 15 meters
+senses
+turns clockwise by, moves 10 meters
+senses
+
+@output1 :
+[39.05124837953327, 46.09772228646444, 39.05124837953327, 46.09772228646444]
+
+@output2 :
+[32.01562118716424, 53.150729063673246, 47.16990566028302, 40.311288741492746]
+"""
+if __name__ == "__main__":
+    myrobot = robot()
+    myrobot.set(30,50,pi/2)
+    myrobot = myrobot.move(-pi/2,15.0)
+    z_one = myrobot.sense()
+    print("observation 1:",z_one)
+    myrobot = myrobot.move(-pi/2,10.0)
+    z_two = myrobot.sense()
+    print("observation 2:",z_two)
