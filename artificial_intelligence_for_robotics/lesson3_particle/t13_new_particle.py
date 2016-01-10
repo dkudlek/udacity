@@ -124,6 +124,8 @@ if __name__ == "__main__":
     # You should make sure that p3 contains a list with particles
     # resampled according to their weights.
     # Also, DO NOT MODIFY p.
+
+    ## normalization
     W = sum(w)
     w_norm = []
     for i in range(N):

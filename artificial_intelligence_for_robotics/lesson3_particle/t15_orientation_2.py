@@ -111,6 +111,7 @@ if __name__ == "__main__":
         x.set_noise(0.05, 0.05, 5.0)
         p.append(x)
 
+    ## move twice and update
     for i in range(rounds):
         myrobot = myrobot.move(0.1, 5.0)
         Z = myrobot.sense()

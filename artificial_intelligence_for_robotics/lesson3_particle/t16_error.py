@@ -87,7 +87,9 @@ class robot:
     def __repr__(self):
         return '[x=%.6s y=%.6s orient=%.6s]' % (str(self.x), str(self.y), str(self.orientation))
 
-
+"""
+@brief Distance from the actual (simulated) robot
+"""
 
 def eval(r, p):
     sum = 0.0;

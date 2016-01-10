@@ -92,7 +92,7 @@ class robot:
 
 """
 @task three ("robot particles")
-@todo simulate robot motion
+@todo simulate particle motion
 
 @steps
 Each particle should turn by 0.1 and then move by 5.

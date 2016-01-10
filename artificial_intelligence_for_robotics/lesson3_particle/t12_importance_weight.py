@@ -73,7 +73,11 @@ class robot:
         # calculates the probability of x for 1-dim Gaussian with mean mu and var. sigma
         return exp(- ((mu - x) ** 2) / (sigma ** 2) / 2.0) / sqrt(2.0 * pi * (sigma ** 2))
 
-
+    """
+    @brief describes the likelihood that the current particle/robot has seen the given measurement
+    @param measurment what did our actual (simulated) robot see
+    @return prob propability of seeing the same lm (with noisy sensor)
+    """
     def measurement_prob(self, measurement):
 
         # calculates how likely a measurement should be
@@ -101,10 +105,14 @@ use measurement from the robot to compute weight
 """
 
 if __name__ == "__main__":
+    ## random initialization of a simulated robot
+    ## no noise
     myrobot = robot()
     myrobot = myrobot.move(0.1, 5.0)
-    Z = myrobot.sense()
+    Z = myrobot.sense() # what did our actual robot see here?
 
+    ## random particles that should estimate the originals postion
+    ## with noise
     N = 1000
     p = []
     for i in range(N):
@@ -112,13 +120,15 @@ if __name__ == "__main__":
         x.set_noise(0.05, 0.05, 5.0)
         p.append(x)
 
+    ## repeat the same motion as the simulated robot did
     p2 = []
     for i in range(N):
         p2.append(p[i].move(0.1, 5.0))
     p = p2
 
+    ## what is the probability that a random particle saw the same landmarks
+    ## its also the weight of the particle (how close is it to the original)
     w = []
-    #insert code here!
     for i in range(N):
         Z = p[i].sense()
         w.append(p[i].measurement_prob(Z))
